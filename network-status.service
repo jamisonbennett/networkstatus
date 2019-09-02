@@ -1,0 +1,11 @@
+[Unit]
+Description=Network status
+After=network-online.target dhcpcd5.service time-sync.target avahi-daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/local/bin/network-status/network-status-service.sh start
+ExecStop=/usr/local/bin/network-status/network-status-service.sh stop
+
+[Install]
+WantedBy=multi-user.target
